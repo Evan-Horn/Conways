@@ -23,7 +23,11 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
     private Rectangle2D map;
     public Panel()
     {
-
+        super();
+        setBorder(null);
+        addMouseListener(this);
+        addMouseMotionListener(this);
+        addComponentListener(this);
     }
     /**
      * @param e the event to be processed
