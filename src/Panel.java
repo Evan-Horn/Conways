@@ -225,6 +225,7 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
             }
 
             if (play) {
+                next = new boolean[clicked.length][clicked[0].length];
                 for (int row = 0; row < map.length; row++) {
                     for (int col = 0; col < map[row].length; col++) {
                         int neighbors = 0;
@@ -242,9 +243,12 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
 
                         if(clicked[row][col])
                         {
-                            if(neighbors==0 || neighbors==1 || neighbors>=4)
+                            if(neighbors==2 || neighbors==3)
                             {
-                                next[row][col]=false;
+                                next[row][col]=true;
+                            }
+                            else {
+                                next[row][col] = false;
                             }
                         }
                         else
