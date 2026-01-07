@@ -12,6 +12,7 @@ public class Main {
         int height = (int)(screenSize.getHeight()*0.7);
         screen = new Panel();
         JFrame frame = new JFrame("Conways Game of Life");
+        frame.getContentPane().setBackground(Color.BLACK);
         Panel.setFrameIn(frame);
         frame.setSize(width, height);
         frame.setLocation(0, 0);
