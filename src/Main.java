@@ -20,7 +20,6 @@ public class Main {
         frame.setContentPane(screen);
         frame.setVisible(true);
         frame.addKeyListener(screen);
-        /*double width2 = frame.getSize().getWidth();
-        double height2 = frame.getSize().getHeight();*/
+
     }
 }
