@@ -18,17 +18,31 @@ import java.awt.image.AffineTransformOp;
 import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D;
-public class Panel extends JPanel implements KeyListener, MouseListener, MouseMotionListener, ComponentListener{
+
+public class Panel extends JPanel implements KeyListener, MouseListener, MouseMotionListener, ComponentListener {
 
     private Rectangle2D map;
-    public Panel()
-    {
+    private static final int DELAY = 1;
+    private static Timer t;
+    private static int frame;
+    private static JFrame frameWeIn;
+    private Dimension screenSize;
+
+
+    public Panel() {
         super();
         setBorder(null);
         addMouseListener(this);
         addMouseMotionListener(this);
         addComponentListener(this);
+        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        t = new Timer(DELAY, new Listener());
+        t.start();
+
+        frame=0;
     }
+
     /**
      * @param e the event to be processed
      */
@@ -133,6 +147,10 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
 
     }
 
+    protected static void setFrameIn(JFrame state) {
+        frameWeIn = state;
+    }
+
     /**
      * @param e the event to be processed
      */
@@ -140,11 +158,15 @@ public class Panel extends JPanel implements KeyListener, MouseListener, MouseMo
     public void mouseMoved(MouseEvent e) {
 
     }
+
     private class Listener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) //evoked each iteration, basically its always being called as the program runs
         {
-
+            frame++;
+            if (frame == Integer.MAX_VALUE) {
+                frame = 0;
+            }
         }
     }
 }
